@@ -11,12 +11,11 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('habits', function (Blueprint $table) {
+        Schema::create('habit_reminders', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
+            $table->foreignId('habit_id')->constrained('habits')->onDelete('cascade');
             $table->foreignId('user_id')->constrained('users')->onDelete('cascade');
-            $table->foreignId('categories_id')->constrained('category_habits')->onDelete('cascade');
-            $table->enum('goal', ['daily', 'weekly', 'monthly'])->default('weekly');
+            $table->date('reminder_time');
             $table->timestamps();
         });
     }
@@ -26,6 +25,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('habits');
+        Schema::dropIfExists('habit_reminders');
     }
 };
