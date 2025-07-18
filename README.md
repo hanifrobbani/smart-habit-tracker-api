@@ -14,6 +14,7 @@ Simple api for tracking habit user
 2. PostgresDB
 3. JWT (tymon/jwt-auth)
 4. Laravel Scheduler
+5. Laravel Broadcasting
 
 
 ## Setup :
