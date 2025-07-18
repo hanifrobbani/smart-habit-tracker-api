@@ -10,9 +10,8 @@ Artisan::command('inspire', function () {
     $this->comment(Inspiring::quote());
 })->purpose('Display an inspiring quote');
 
-
 Schedule::call(function () {
-    Log::info("Scheduler dipanggil pada " . now());
+    Log::info("Scheduler call at " . now());
     broadcast(new ReminderHabit());
 })->everyMinute();
 

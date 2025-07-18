@@ -13,4 +13,9 @@ class CategoryHabits extends Model
     protected $guarded = [];
     protected $table = 'category_habits';
 
+    public function Habits()
+    {
+        return $this->hasMany(Habit::class, 'id');
+    }
+
 }

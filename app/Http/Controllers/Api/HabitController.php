@@ -16,9 +16,9 @@ class HabitController extends Controller
      */
     public function index()
     {
-        $data = Habit::latest()->get();
+
         return response()->json([
-            'data' => $data,
+            'data' => Habit::latest()->get(),
             'message' => 'Successfully get habit data',
             'success' => true
         ], 200);
@@ -107,12 +107,21 @@ class HabitController extends Controller
     public function destroy(string $id)
     {
         $data = Habit::findOrFail($id);
-        $data->delete();
 
-        return response()->json([
-            'message' => 'Habit Sucessfuly deletdd!',
-            'success' => true,
-            'data' => $data
-        ], 200);
+        try {
+            $data->delete();
+
+            return response()->json([
+                'message' => 'Habit Sucessfuly deleted!',
+                'success' => true,
+                'data' => $data
+            ], 200);
+        } catch (Exception $e) {
+            return response()->json([
+                'message' => $e->getMessage(),
+                'success' => false,
+            ], 500);
+        }
+
     }
 }
