@@ -42,6 +42,8 @@ class HabitCheckinController extends Controller
                 'user_id' => $user->id,
                 'checkin_date' => $checkinDate,
             ]);
+            $habit->longest_streak + 1;
+            $habit->save();
 
             return response()->json([
                 'message' => 'Habit checked in successfully!',

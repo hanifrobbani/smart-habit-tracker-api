@@ -54,4 +54,8 @@ class DataHabitController extends Controller
             'success' => true
         ]);
     }
+
+    public function habitTarget(){
+        
+    }
 }

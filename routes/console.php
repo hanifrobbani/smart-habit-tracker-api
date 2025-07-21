@@ -12,6 +12,7 @@ Artisan::command('inspire', function () {
 
 Schedule::call(function () {
     Log::info("Scheduler call at " . now());
-    broadcast(new ReminderHabit());
+    (new ReminderHabit())();
 })->everyMinute();
+
 
