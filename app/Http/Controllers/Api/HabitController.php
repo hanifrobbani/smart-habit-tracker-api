@@ -77,7 +77,7 @@ class HabitController extends Controller
         $data = Habit::findOrFail($id);
         $validate = Validator::make($request->all(), [
             'name' => 'sometimes|max:255',
-            'categories_id' => 'sometimes|exists:categories,id',
+            'categories_id' => 'sometimes|exists:category_habits,id',
             'goal' => 'sometimes',
         ]);
 

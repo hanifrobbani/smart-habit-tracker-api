@@ -20,11 +20,6 @@ class HabitCheckinController extends Controller
   
         $habit = Habit::findOrFail($id);
         $user = Auth::user();
-
-        if (!$user) {
-            return response()->json(['message' => 'Unauthorized. Please log in.'], 401);
-        }
-
         $checkinDate = Carbon::now()->toDateString();
 
         $existingCheckinToday = HabitCheckins::where('habit_id', $habit->id)
@@ -48,7 +43,7 @@ class HabitCheckinController extends Controller
             return response()->json([
                 'message' => 'Habit checked in successfully!',
                 'checkin' => $checkin
-            ], 201);
+            ], 200);
         } catch (\Exception $e) {
             return response()->json(['message' => 'Failed to check in habit.', 'error' => $e->getMessage()], 500);
         }
