@@ -66,3 +66,5 @@ Simple api for tracking habit user
     ```
     event(new \App\Events\HabitReminderEvent(1, 'Test send habit message'))
     ```
+<b><i>Note: </i></b>
+make sure you already setup the `.env` file using credential from [pusher](https://pusher.com), just follow the instructions that have been given there
