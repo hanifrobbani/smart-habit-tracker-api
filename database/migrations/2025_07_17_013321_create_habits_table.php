@@ -16,7 +16,6 @@ return new class extends Migration
             $table->string('name');
             $table->foreignId('user_id')->constrained('users')->onDelete('cascade');
             $table->foreignId('categories_id')->constrained('category_habits')->onDelete('cascade');
-            $table->enum('goal', ['daily', 'weekly', 'monthly'])->default('weekly');
             $table->integer('longest_streak')->default(0);
             $table->timestamps();
         });

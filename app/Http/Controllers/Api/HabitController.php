@@ -34,7 +34,6 @@ class HabitController extends Controller
         $validate = Validator::make($request->all(), [
             'name' => 'required|max:255',
             'categories_id' => 'required',
-            'goal' => 'required',
         ]);
 
         if ($validate->fails()) {
@@ -78,7 +77,6 @@ class HabitController extends Controller
         $validate = Validator::make($request->all(), [
             'name' => 'sometimes|max:255',
             'categories_id' => 'sometimes|exists:category_habits,id',
-            'goal' => 'sometimes',
         ]);
 
 
