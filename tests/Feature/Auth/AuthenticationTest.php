@@ -48,4 +48,27 @@ class AuthenticationTest extends TestCase
         $this->assertNotEmpty($responseData['token']);
 
     }
+
+    public function test_logout_user()
+    {
+        User::create([
+            'name' => 'user',
+            'email' => 'user@mail.com',
+            'password' => Hash::make('user123'),
+        ]);
+
+        $dataUser = [
+            'email' => 'user@mail.com',
+            'password' => 'user123',
+        ];
+
+        $loginResponse = $this->post('/api/login', $dataUser);
+        $token = $loginResponse['token'];
+
+        $response = $this->withHeaders([
+            'Authorization' => "Bearer $token"
+        ])->post('/api/logout');
+
+        $response->assertStatus(200);
+    }
 }
