@@ -37,12 +37,13 @@ class HabitCheckinController extends Controller
                 'user_id' => $user->id,
                 'checkin_date' => $checkinDate,
             ]);
-            $habit->longest_streak + 1;
+            $habit->longest_streak = $habit->longest_streak + 1;
             $habit->save();
 
             return response()->json([
                 'message' => 'Habit checked in successfully!',
-                'checkin' => $checkin
+                'checkin' => $checkin,
+                'streaks' => $habit->longest_streak
             ], 200);
         } catch (\Exception $e) {
             return response()->json(['message' => 'Failed to check in habit.', 'error' => $e->getMessage()], 500);

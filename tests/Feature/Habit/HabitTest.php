@@ -58,7 +58,6 @@ class HabitTest extends TestCase
             'name' => 'eat healthy',
             'categories_id' => '1',
             'user_id' => '1',
-            'goal' => 'daily',
         ];
 
         $loginResponse = $this->post('/api/login', $dataUser);
@@ -95,7 +94,6 @@ class HabitTest extends TestCase
             'name' => 'eat healthy',
             'categories_id' => 1,
             'user_id' => 1,
-            'goal' => 'daily',
         ];
 
         $createResponse = $this->withHeaders([
@@ -108,7 +106,6 @@ class HabitTest extends TestCase
         $updatedHabit = [
             'name' => 'gym',
             'categories_id' => 1,
-            'goal' => 'weekly',
         ];
 
         $updateResponse = $this->withHeaders([
@@ -120,7 +117,6 @@ class HabitTest extends TestCase
         $this->assertDatabaseHas('habits', [
             'id' => $habitId,
             'name' => 'gym',
-            'goal' => 'weekly',
         ]);
 
         $this->assertDatabaseMissing('habits', [
@@ -153,7 +149,6 @@ class HabitTest extends TestCase
             'name' => 'eat healthy',
             'categories_id' => 1,
             'user_id' => 1,
-            'goal' => 'daily',
         ];
 
         $createResponse = $this->withHeaders([
